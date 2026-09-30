@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sign Up - HireNest</title>
+    <link rel="icon" href="assets/images/logo.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <div id="nav"></div>
+    <main class="wrap">
+        <div class="auth-page">
+            <div class="card">
+                <h1>Create your account</h1>
+                <p class="mut" style="text-align:center">It takes less than a minute.</p>
+
+                <form id="signupForm" novalidate>
+                    <div class="f">
+                        <label for="name">Full name</label>
+                        <input type="text" id="name" placeholder="Aarav Sharma">
+                        <div class="err" id="e-name"></div>
+                    </div>
+                    <div class="f">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" placeholder="you@example.com">
+                        <div class="err" id="e-email"></div>
+                    </div>
+                    <div class="f">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="At least 6 characters">
+                        <div class="err" id="e-password"></div>
+                    </div>
+                    <div class="f">
+                        <label for="confirm">Confirm password</label>
+                        <input type="password" id="confirm" placeholder="Type the password again">
+                        <div class="err" id="e-confirm"></div>
+                    </div>
+                    <button class="btn" type="submit">Sign Up</button>
+                </form>
+
+                <p class="auth-note mut">Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </div>
+    </main>
+    <footer class="foot">© 2026 HireNest. Find your next opportunity.</footer>
+    <div id="toasts" aria-live="polite"></div>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

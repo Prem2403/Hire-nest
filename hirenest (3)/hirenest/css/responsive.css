@@ -1,0 +1,57 @@
+@media(max-width:900px) {
+    .layout {
+        grid-template-columns: 1fr
+    }
+}
+
+@media(max-width:760px) {
+    #burger {
+        display: block
+    }
+
+    #theme {
+        margin-left: auto
+    }
+
+    .links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--card);
+        padding: 10px;
+        border-bottom: 1px solid var(--bd);
+        margin: 0
+    }
+
+    .links.open {
+        display: flex
+    }
+
+    .search {
+        flex-direction: column
+    }
+
+    .form,
+    .grid2 {
+        grid-template-columns: 1fr
+    }
+
+    .grid {
+        grid-template-columns: 1fr
+    }
+
+    .hero {
+        padding: 40px 16px
+    }
+
+    .stats b {
+        font-size: 1.4rem
+    }
+
+    .tl div {
+        font-size: .62rem
+    }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Find Jobs - HireNest</title>
+    <link rel="icon" href="assets/images/logo.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <div id="nav"></div>
+    <main class="wrap">
+        <h1>Find Jobs</h1>
+        <div class="layout">
+            <form class="card filters" id="ff">
+                <h3 style="margin-bottom:14px">Filters</h3>
+                <div class="f"><label for="fq">Keyword</label><input id="fq" placeholder="Title, skill or company">
+                </div>
+                <div class="f"><label for="fl">Location</label><input id="fl" placeholder="e.g. Pune"></div>
+                <div class="f"><label>Job type</label>
+                    <div id="types"></div>
+                </div>
+                <div class="f"><label>Work mode</label>
+                    <div id="modes"></div>
+                </div>
+                <div class="f"><label for="fexp">Experience level</label><select id="fexp"></select></div>
+                <div class="f"><label for="fsal">Salary range</label><select id="fsal">
+                        <option value="0">Any salary</option>
+                        <option value="5">₹5 LPA and above</option>
+                        <option value="10">₹10 LPA and above</option>
+                        <option value="15">₹15 LPA and above</option>
+                        <option value="20">₹20 LPA and above</option>
+                    </select></div>
+                <div class="f"><label for="fcat">Category</label><select id="fcat"></select></div>
+                <button type="button" class="btn ghost" id="clear" style="width:100%">Clear Filters</button>
+            </form>
+            <section>
+                <div class="row between"><span id="count" class="mut"></span><select id="sort" style="width:auto"
+                        aria-label="Sort jobs">
+                        <option value="new">Newest</option>
+                        <option value="hi">Salary: High to Low</option>
+                        <option value="lo">Salary: Low to High</option>
+                    </select></div>
+                <div class="grid" id="jobList" style="margin-top:14px"></div>
+            </section>
+        </div>
+    </main>
+    <footer class="foot">© 2026 HireNest. Find your next opportunity.</footer>
+    <div id="toasts" aria-live="polite"></div>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jobs.js"></script>
+</body>
+
+</html>

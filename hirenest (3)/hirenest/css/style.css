@@ -1,0 +1,827 @@
+/* HireNest - main styles
+   Colours are stored in variables at the top, so changing a colour here
+   changes it across the whole website. Dark mode just swaps the variables. */
+
+:root {
+    --bg: #f1f5f9;        /* page background (light grey-blue) */
+    --card: #ffffff;      /* cards and boxes */
+    --tx: #0f172a;        /* main text (dark navy) */
+    --mut: #64748b;       /* muted grey text */
+    --bd: #dbe3ec;        /* borders */
+    --navy: #0f2a4a;      /* header and footer */
+    --pri: #2563eb;       /* main blue */
+    --pri2: #1d4ed8;      /* darker blue for hover */
+    --teal: #0d9488;      /* second colour */
+    --gold: #f59e0b;      /* accent colour for highlights */
+    --ok: #16a34a;        /* success green */
+    --red: #dc2626;       /* error red */
+    --sh: 0 2px 10px rgba(15, 42, 74, .08);
+    --r: 10px;
+}
+
+[data-theme=dark] {
+    --bg: #0b1220;
+    --card: #131c2e;
+    --tx: #e6ecf5;
+    --mut: #94a3b8;
+    --bd: #26334a;
+    --navy: #0a1424;
+    --pri: #3b82f6;
+    --pri2: #2563eb;
+    --sh: 0 2px 10px rgba(0, 0, 0, .4);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--tx);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    margin: 30px 0 14px;
+    padding-left: 12px;
+    border-left: 5px solid var(--gold);
+}
+
+h3 {
+    font-size: 1.05rem;
+}
+
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* ---------- Layout helpers ---------- */
+.wrap {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 24px 20px;
+}
+
+.mut {
+    color: var(--mut);
+}
+
+.sm {
+    font-size: .85rem;
+}
+
+.grow {
+    flex: 1;
+    min-width: 0;
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+/* ---------- Header / navigation ---------- */
+#nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+header {
+    background: var(--navy);
+    color: #fff;
+    border-bottom: 3px solid var(--gold);
+}
+
+.nav {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.3rem;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.logo i {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--gold);
+    display: grid;
+    place-items: center;
+    color: var(--navy);
+    font-style: normal;
+}
+
+.links {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    align-items: center;
+}
+
+.links a {
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.links a:hover,
+.links a.on {
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+}
+
+.links a.signup {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+}
+
+.links a.signup:hover {
+    background: #fbbf24;
+    color: var(--navy);
+}
+
+.links .hi {
+    color: var(--gold);
+    font-weight: 600;
+    padding: 0 8px;
+}
+
+.icon-btn {
+    border: 1px solid var(--bd);
+    background: none;
+    color: var(--tx);
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    flex: none;
+}
+
+header .icon-btn {
+    color: #fff;
+    border-color: rgba(255, 255, 255, .3);
+}
+
+#burger {
+    display: none;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font: 600 .9rem inherit;
+    cursor: pointer;
+    background: var(--pri);
+    color: #fff;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: var(--pri2);
+}
+
+.btn.ghost {
+    background: none;
+    color: var(--pri);
+    border: 1px solid var(--pri);
+}
+
+.btn.ghost:hover {
+    background: rgba(37, 99, 235, .08);
+}
+
+.btn.ghost.on {
+    background: var(--pri);
+    color: #fff;
+}
+
+.btn.gold {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.btn.gold:hover {
+    background: #fbbf24;
+}
+
+.btn.sm {
+    padding: 7px 12px;
+    font-size: .82rem;
+}
+
+.btn:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+/* ---------- Form fields ---------- */
+input,
+select,
+textarea {
+    font: inherit;
+    color: var(--tx);
+    background: var(--card);
+    border: 1px solid var(--bd);
+    border-radius: 8px;
+    padding: 10px 12px;
+    width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--pri);
+}
+
+input[type=checkbox] {
+    width: auto;
+}
+
+/* ---------- Home page ---------- */
+.hero {
+    text-align: center;
+    padding: 70px 20px;
+    border-radius: 14px;
+    color: #fff;
+    background: linear-gradient(rgba(15, 42, 74, .88), rgba(37, 99, 235, .78)), url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvOieOl-j9EJo7MgUSnM0qVL9k8SlHASM0vtNy4n0qdg&s=10") center / cover no-repeat, url(../assets/images/skyline.svg) center bottom / cover no-repeat;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
+}
+
+.hero p {
+    color: #dbeafe;
+    margin: 8px 0 26px;
+}
+
+.search {
+    display: flex;
+    gap: 10px;
+    background: var(--card);
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: var(--sh);
+}
+
+.cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.cat {
+    background: var(--card);
+    border: 1px solid var(--bd);
+    border-left: 4px solid var(--teal);
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.cat:hover {
+    border-left-color: var(--gold);
+    color: var(--pri);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 40px 0;
+    text-align: center;
+    background: linear-gradient(rgba(15, 42, 74, .92), rgba(15, 42, 74, .92)), url(../assets/images/skyline.svg) center bottom / cover no-repeat;
+    color: #fff;
+    padding: 28px;
+    border-radius: 12px;
+}
+
+.stats b {
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.stats .mut {
+    color: #cbd5e1;
+}
+
+/* ---------- Grids ---------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    gap: 24px;
+    margin-top: 16px;
+    align-items: start;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    background: var(--card);
+    border: 1px solid var(--bd);
+    border-top: 4px solid var(--pri);
+    border-radius: var(--r);
+    padding: 20px;
+    box-shadow: var(--sh);
+}
+
+.grid .card:hover {
+    border-top-color: var(--gold);
+}
+
+.card>.row:last-child {
+    margin-top: 14px;
+}
+
+.det h3 {
+    margin: 18px 0 6px;
+    color: var(--pri);
+}
+
+ul {
+    padding-left: 20px;
+    margin: 6px 0;
+}
+
+.av {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-weight: 700;
+    flex: none;
+}
+
+.big {
+    width: 96px;
+    height: 96px;
+    font-size: 2rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 12px 0;
+}
+
+.tag {
+    background: var(--bg);
+    border: 1px solid var(--bd);
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: .78rem;
+}
+
+.chip {
+    background: rgba(13, 148, 136, .12);
+    color: var(--teal);
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: .78rem;
+    font-weight: 600;
+}
+
+.bm.on svg {
+    fill: var(--gold);
+    color: var(--gold);
+}
+
+/* ---------- Filters and forms ---------- */
+.filters .f {
+    margin-bottom: 14px;
+}
+
+.ck {
+    display: block;
+    font-weight: 400 !important;
+    margin: 4px 0;
+}
+
+.f label {
+    font-weight: 600;
+    font-size: .85rem;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.err {
+    color: var(--red);
+    font-size: .8rem;
+    min-height: 1.1em;
+}
+
+.f.bad :is(input, select, textarea) {
+    border-color: var(--red);
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.f.full {
+    grid-column: 1/-1;
+}
+
+/* ---------- Login / Sign up pages ---------- */
+.auth-page {
+    max-width: 440px;
+    margin: 30px auto;
+}
+
+.auth-page .card {
+    border-top-color: var(--gold);
+    padding: 28px;
+}
+
+.auth-page h1 {
+    text-align: center;
+    color: var(--navy);
+}
+
+[data-theme=dark] .auth-page h1 {
+    color: var(--tx);
+}
+
+.auth-page .f {
+    margin-top: 14px;
+}
+
+.auth-page .btn {
+    width: 100%;
+    margin-top: 18px;
+}
+
+.auth-note {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.auth-note a {
+    color: var(--pri);
+    font-weight: 600;
+}
+
+/* ---------- Application status badges ---------- */
+.badge {
+    padding: 3px 12px;
+    border-radius: 99px;
+    font-size: .78rem;
+    font-weight: 600;
+}
+
+.s-Applied {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.s-UnderReview {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.s-Shortlisted {
+    background: #ede9fe;
+    color: #6d28d9;
+}
+
+.s-Interview {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.s-Rejected {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* timeline */
+.tl {
+    display: flex;
+    margin-top: 16px;
+}
+
+.tl div {
+    flex: 1;
+    text-align: center;
+    font-size: .72rem;
+    color: var(--mut);
+    position: relative;
+}
+
+.tl div:before {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bd);
+    margin: 0 auto 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.tl div:after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: -50%;
+    width: 100%;
+    height: 2px;
+    background: var(--bd);
+}
+
+.tl div:first-child:after {
+    display: none;
+}
+
+.tl .done:before,
+.tl .done:after {
+    background: var(--teal);
+}
+
+.tl .bad:before,
+.tl .bad:after {
+    background: var(--red);
+}
+
+/* ---------- Popup (modal) ---------- */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .55);
+    display: none;
+    place-items: center;
+    z-index: 100;
+    padding: 16px;
+}
+
+.modal.open {
+    display: grid;
+}
+
+.box {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 26px;
+    width: 100%;
+    max-width: 640px;
+    max-height: 92vh;
+    overflow: auto;
+}
+
+/* ---------- Resume upload ---------- */
+.drop {
+    border: 2px dashed var(--bd);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.drop.over {
+    border-color: var(--pri);
+    background: rgba(37, 99, 235, .08);
+}
+
+.fileitem {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid var(--bd);
+    border-radius: 8px;
+}
+
+.bar {
+    height: 8px;
+    background: var(--bd);
+    border-radius: 9px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.bar b {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--teal);
+}
+
+.okp {
+    text-align: center;
+    padding: 20px;
+}
+
+.check {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--ok);
+    color: #fff;
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 12px;
+}
+
+/* ---------- Toast messages, loader, empty state, footer ---------- */
+#toasts {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: grid;
+    gap: 10px;
+    z-index: 200;
+}
+
+.toast {
+    background: var(--card);
+    border-left: 4px solid var(--ok);
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: var(--sh);
+}
+
+.toast.err {
+    border-color: var(--red);
+}
+
+.loader {
+    width: 38px;
+    height: 38px;
+    border: 4px solid var(--bd);
+    border-top-color: var(--pri);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin: 40px auto;
+    grid-column: 1/-1;
+}
+
+.empty {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--mut);
+    grid-column: 1/-1;
+}
+
+.foot {
+    text-align: center;
+    background: var(--navy);
+    color: #cbd5e1;
+    padding: 24px;
+    font-size: .85rem;
+    margin-top: 30px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---------- Moving "Now Hiring" bar ---------- */
+.ticker {
+    display: flex;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: .88rem;
+    overflow: hidden;
+}
+
+.ticker .live {
+    background: var(--red);
+    color: #fff;
+    padding: 7px 16px;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.track {
+    flex: 1;
+    overflow: hidden;
+}
+
+.slide {
+    display: inline-flex;
+    white-space: nowrap;
+    padding: 7px 0;
+    animation: scroll 60s linear infinite;
+}
+
+.slide span {
+    margin-right: 50px;
+}
+
+.ticker:hover .slide {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* ---------- Top company cards ---------- */
+.co {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.co-img {
+    position: relative;
+    height: 170px;
+    background: var(--navy);
+}
+
+.co-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.co-img .av {
+    position: absolute;
+    left: 14px;
+    bottom: 10px;
+    background: #fff;
+    color: var(--navy);
+    box-shadow: var(--sh);
+}
+
+.co-body {
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.co-body .meta {
+    margin: 4px 0;
+}
+
+.co-body .btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
